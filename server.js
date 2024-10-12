@@ -16,10 +16,10 @@ const app = new express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: '*',credentials: true }));
-app.use('/api/v1/auth', authRoute);
-app.use('/api/v1/user', userRoute);
-app.use('/api/v1/temp', Video);
-app.use('/api/v1/comments',comment)
+app.use('/auth', authRoute);
+app.use('/user', userRoute);
+app.use('/temp', Video);
+app.use('/comments',comment)
 
 app.use((err, req, res, next) => {
     const status = err.status || 500;
