@@ -31,7 +31,13 @@ app.use((err, req, res, next) => {
     });
 })
 
+app.get('/', (req, res) => {
+    res.send('Hello');
+})
+
 app.listen(PORT, () => {
     console.log(`Server Started at http://localhost:${PORT}`);
     connectDB();
 });
+
+export default app;
