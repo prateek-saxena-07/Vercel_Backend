@@ -5,8 +5,10 @@ import authRoute from './routes/auth.route.js';
 import userRoute from './routes/user.route.js'
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import Video from './routes/addVideo.route.js'
+
 import comment from './routes/comment.route.js'
+import Video from './routes/addVideo.route.js';
+
 
 dotenv.config();
 const PORT = process.env.PORT || 5100;
@@ -15,7 +17,7 @@ const app = new express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: '*',credentials: true }));
+app.use(cors({ origin: 'http://localhost:5173',credentials: true }));
 app.use('/auth', authRoute);
 app.use('/user', userRoute);
 app.use('/temp', Video);
