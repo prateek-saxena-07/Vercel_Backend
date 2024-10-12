@@ -23,7 +23,7 @@
   },
   "name": "youtube_capstone_project",
   "version": "1.0.0",
-  "main": "./Backend/server.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./Backend/server.js",
