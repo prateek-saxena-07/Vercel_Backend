@@ -13,7 +13,7 @@ import Video from './routes/addVideo.route.js';
 dotenv.config();
 const PORT = process.env.PORT || 5100;
 const app = new express();
-
+connectDB();
 
 app.use(express.json());
 app.use(cookieParser());
@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server Started at http://localhost:${PORT}`);
-    connectDB();
+    
 });
 
 export default app;
