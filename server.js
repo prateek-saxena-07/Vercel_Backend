@@ -23,7 +23,12 @@ app.use(
     origin: "https://vercel-frontend-xi-coral.vercel.app",
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "x-csrf-token",
+      "Access-Control-Allow-Origin",
+    ],
   })
 );
 
