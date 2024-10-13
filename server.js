@@ -17,9 +17,17 @@ connectDB();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({ origin: "https://vercel-frontend-xi-coral.vercel.app", credentials: true })
-);
+// app.use(
+//   cors({
+//     origin: "https://vercel-frontend-xi-coral.vercel.app",
+//     credentials: true,
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
+//   })
+// );
+
+app.use(cors());
+
 app.use('/auth', authRoute);
 app.use('/user', userRoute);
 app.use('/temp', Video);

@@ -7,8 +7,8 @@ const Video = express.Router();
 // router.post('/addVideo', addVideo);
 Video.get('/getVideos', getVideos);
 // =============================================
-// Video.post("/", verifyToken, addVideos);
-Video.post("/", addVideos);
+Video.post("/", verifyToken, addVideos);
+
 Video.patch('/:id',verifyToken, updateVideos);
 Video.delete("/:id", verifyToken, deleteVideos);
 Video.get("/find/:id", getVideo);//:id video._id
