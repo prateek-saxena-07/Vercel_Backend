@@ -24,7 +24,12 @@ export const update = async (req, res, next) => {
             },
                 { new: true }
             );
-            const { password, ...others } = updatedUser._doc;
+          const { password, ...others } = updatedUser._doc;
+            res.setHeader(
+              "Access-Control-Allow-Origin",
+              "https://vercel-frontend-xi-coral.vercel.app"
+            );
+            res.setHeader("Access-Control-Allow-Credentials", "true");
             res.status(200).json(others)
         }
         catch (err)
@@ -49,6 +54,11 @@ export const like = async (req, res, next) => {
       $addToSet: { likes: id },
       $pull: { dislikes: id },
     });
+      res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://vercel-frontend-xi-coral.vercel.app"
+      );
+      res.setHeader("Access-Control-Allow-Credentials", "true");
     res.status(200).json("The video has been liked.");
   } catch (err) {
     next(err);
@@ -63,6 +73,11 @@ export const dislike = async (req, res, next) => {
       $addToSet: { dislikes: id },
       $pull: { likes: id },
     });
+      res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://vercel-frontend-xi-coral.vercel.app"
+      );
+      res.setHeader("Access-Control-Allow-Credentials", "true");
     res.status(200).json("The video has been disliked.");
   } catch (err) {
     next(err);
@@ -77,6 +92,11 @@ export const subscribe = async (req, res, next) => {
     await User.findByIdAndUpdate(req.params.id, {
       $inc: { subscribers: 1 },
     });
+      res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://vercel-frontend-xi-coral.vercel.app"
+      );
+      res.setHeader("Access-Control-Allow-Credentials", "true");
     res.status(200).json("Subscription successful.");
   } catch (err) {
     next(err);
@@ -92,6 +112,11 @@ export const unsubscribe = async (req, res, next) => {
       await User.findByIdAndUpdate(req.params.id, {
         $inc: { subscribers: -1 },
       });
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://vercel-frontend-xi-coral.vercel.app"
+        );
+        res.setHeader("Access-Control-Allow-Credentials", "true");
       res.status(200).json("Unsubscription successful.");
     } catch (err) {
       next(err);

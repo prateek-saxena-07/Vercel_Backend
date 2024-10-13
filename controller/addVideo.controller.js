@@ -58,6 +58,8 @@ export const addVideos = async (req, res, next) => {
 
 export const updateVideos = async (req, res, next) => {try {
   const video = await Video.findById(req.params.id);
+
+  
   if (!video) return next(createError(404, "Video not found!"));
   if (req.user.id === video.userId) {
     const updatedVideo = await Video.findByIdAndUpdate(
@@ -68,6 +70,13 @@ export const updateVideos = async (req, res, next) => {try {
       { new: true }
     );
     const userVideos = await Video.find({ userId: req.user.id });
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://vercel-frontend-xi-coral.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
+
     res
       .status(200)
       .json({ message: "The video has been Updated.", data: userVideos });
@@ -86,6 +95,13 @@ export const deleteVideos = async (req, res, next) => {
    if (req.user.id === video.userId) {
      await Video.findByIdAndDelete(req.params.id);
      const userVideos = await Video.find({ userId: req.user.id });
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://vercel-frontend-xi-coral.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
+
      res.status(200).json({message:"The video has been deleted.", data: userVideos});
    } else {
      return next(createError(403, "You can delete only your video!"));
