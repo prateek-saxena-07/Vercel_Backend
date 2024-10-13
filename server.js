@@ -27,7 +27,6 @@ app.use(
       "Content-Type",
       "Authorization",
       "x-csrf-token",
-      "Access-Control-Allow-Origin",
     ],
   })
 );
