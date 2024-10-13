@@ -37,19 +37,22 @@ export const getVideos = async (req, res) => {
 }
 // =================================
 export const addVideos = async (req, res, next) => {
-   const newVideo = new Video({ userId: req.user.id, ...req.body });
-   try {
-     const savedVideo = await newVideo.save();
-     res.status(200).json(savedVideo);
-     res.setHeader(
-       "Access-Control-Allow-Origin",
-       "https://vercel-frontend-xi-coral.vercel.app"
-     );
-     res.setHeader("Access-Control-Allow-Credentials", "true");
-   } catch (err) {
-     next(err);
-   }
-}
+  const newVideo = new Video({ userId: req.user.id, ...req.body });
+  try {
+    // Set the CORS headers before sending the response
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://vercel-frontend-xi-coral.vercel.app"
+    );
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+
+    // Save the new video and send the response
+    const savedVideo = await newVideo.save();
+    res.status(200).json(savedVideo);
+  } catch (err) {
+    next(err);
+  }
+};
 
 
 
