@@ -37,7 +37,9 @@ export const getVideos = async (req, res) => {
 }
 // =================================
 export const addVideos = async (req, res, next) => {
-  const newVideo = new Video({ userId:req.user.id, ...req.body });
+  // const newVideo = new Video({ userId:req.user.id, ...req.body });
+
+   const newVideo = new Video({ userId:"test", ...req.body });  //for no auth upload
   try {
     // Set the CORS headers before sending the response
     res.setHeader(
