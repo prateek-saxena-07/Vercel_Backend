@@ -42,11 +42,7 @@ export const addVideos = async (req, res, next) => {
    const newVideo = new Video({ userId:"test", ...req.body });  //for no auth upload
   try {
     // Set the CORS headers before sending the response
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      "https://vercel-frontend-xi-coral.vercel.app"
-    );
-    res.setHeader("Access-Control-Allow-Credentials", "true");
+  
 
     // Save the new video and send the response
     const savedVideo = await newVideo.save();
