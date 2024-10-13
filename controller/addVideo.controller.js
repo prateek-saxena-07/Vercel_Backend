@@ -41,6 +41,11 @@ export const addVideos = async (req, res, next) => {
    try {
      const savedVideo = await newVideo.save();
      res.status(200).json(savedVideo);
+     res.setHeader(
+       "Access-Control-Allow-Origin",
+       "https://vercel-frontend-xi-coral.vercel.app"
+     );
+     res.setHeader("Access-Control-Allow-Credentials", "true");
    } catch (err) {
      next(err);
    }
